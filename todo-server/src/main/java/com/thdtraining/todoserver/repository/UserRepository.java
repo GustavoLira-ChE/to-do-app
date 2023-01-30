@@ -7,5 +7,5 @@ import com.thdtraining.todoserver.models.User;
 
 @Repository
 public interface UserRepository extends JpaRepository<User,Integer> {
-    
+    public abstract User findOneByEmail(String email);
 }

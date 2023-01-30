@@ -27,7 +27,8 @@ public class TaskService implements TaskServiceImp {
 
     @Override
     public List<Task> findAllTaskByUserId(Integer id_user) {
-        return this.taskRepo.findAllByIduser(id_user);
+        User user = this.userRepo.findById(id_user).orElse(null);
+        return this.taskRepo.findAllByIduser(user);
     }
 
     @Override

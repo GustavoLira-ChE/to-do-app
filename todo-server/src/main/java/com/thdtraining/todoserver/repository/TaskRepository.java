@@ -6,8 +6,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import com.thdtraining.todoserver.models.Task;
+import com.thdtraining.todoserver.models.User;
 
 @Repository
 public interface TaskRepository extends JpaRepository<Task, Integer> {
-    public abstract List<Task> findAllByIduser(int id);
+    public abstract List<Task> findAllByIduser(User user);
 }
