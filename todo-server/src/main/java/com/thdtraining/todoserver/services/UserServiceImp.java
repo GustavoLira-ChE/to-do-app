@@ -11,5 +11,6 @@ public interface UserServiceImp {
     public User findUserById(Integer id_user);
     public User createUser(UserPojos newUser);
     public boolean deleteUserById(Integer id);
+    public User findUserByEmail(String email);
 
 }
