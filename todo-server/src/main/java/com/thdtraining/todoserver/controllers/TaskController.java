@@ -46,8 +46,8 @@ public class TaskController {
     }
 
     @DeleteMapping("/task-id/{id}")
-    public boolean deleteTaskById(@PathVariable(name="id") int id){
-        return this.deleteTaskById(id);
+    public boolean deleteTaskById(@PathVariable(name="id") Integer id){
+        return this.taskService.deleteTaskById(id);
     }
 
     @PutMapping("/task-id/{id}")
