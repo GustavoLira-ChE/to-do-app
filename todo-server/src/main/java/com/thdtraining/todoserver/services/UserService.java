@@ -3,6 +3,7 @@ package com.thdtraining.todoserver.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.thdtraining.todoserver.models.User;
@@ -13,10 +14,12 @@ import com.thdtraining.todoserver.repository.UserRepository;
 public class UserService implements UserServiceImp {
 
     private UserRepository userRepo;
+    private PasswordEncoder passwordEncoder;
 
     @Autowired
-    public UserService(UserRepository userRepo){
+    public UserService(UserRepository userRepo, PasswordEncoder passwordEncoder){
         this.userRepo = userRepo;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
@@ -35,8 +38,8 @@ public class UserService implements UserServiceImp {
         user.setFirstName(newUser.getFirstName());
         user.setLastName(newUser.getFirstName());
         user.setEmail(newUser.getEmail());
-        user.setPassword(newUser.getPassword());
-        user.setRole(newUser.getRole());
+        user.setPassword(passwordEncoder.encode(newUser.getPassword()));
+        user.setRole("REGULAR");
         return this.userRepo.save(user);
     }
     
@@ -47,5 +50,10 @@ public class UserService implements UserServiceImp {
             return true;
         }
         return false; 
+    }
+
+    @Override
+    public User findUserByEmail(String email) {
+        return this.userRepo.findOneByEmail(email); 
     }
 }
