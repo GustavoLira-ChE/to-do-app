@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.thdtraining.todoserver.models.User;
+//import com.thdtraining.todoserver.pojos.UserEmail;
 import com.thdtraining.todoserver.pojos.UserPojos;
 import com.thdtraining.todoserver.services.UserService;
 
@@ -34,6 +35,11 @@ public class UserController {
     @GetMapping("/id/{id}")
     public User getUserById(@PathVariable(name = "id") int id){
         return this.userService.findUserById(id);
+    }
+
+    @GetMapping("/user-data/{email}")
+    public User getUserByEmail(@PathVariable(name = "email") String email){
+        return this.userService.findUserByEmail(email);
     }
 
     @PostMapping()
