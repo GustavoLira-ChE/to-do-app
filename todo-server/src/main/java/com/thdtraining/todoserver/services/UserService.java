@@ -36,7 +36,7 @@ public class UserService implements UserServiceImp {
     public User createUser(UserPojos newUser) {
         User user = new User();
         user.setFirstName(newUser.getFirstName());
-        user.setLastName(newUser.getFirstName());
+        user.setLastName(newUser.getLastName());
         user.setEmail(newUser.getEmail());
         user.setPassword(passwordEncoder.encode(newUser.getPassword()));
         user.setRole("REGULAR");
