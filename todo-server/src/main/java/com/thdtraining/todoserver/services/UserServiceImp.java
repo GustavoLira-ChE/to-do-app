@@ -4,13 +4,14 @@ import java.util.List;
 
 import com.thdtraining.todoserver.models.User;
 import com.thdtraining.todoserver.pojos.UserPojos;
+import com.thdtraining.todoserver.pojos.UserShowPojo;
 
 public interface UserServiceImp {
 
     public List<User> findAllUser();
-    public User findUserById(Integer id_user);
+    public UserShowPojo findUserById(Integer id_user);
     public User createUser(UserPojos newUser);
     public boolean deleteUserById(Integer id);
-    public User findUserByEmail(String email);
+    public UserShowPojo findUserByEmail(String email);
 
 }

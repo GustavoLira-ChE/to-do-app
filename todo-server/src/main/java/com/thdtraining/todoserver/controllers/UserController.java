@@ -15,11 +15,12 @@ import org.springframework.web.bind.annotation.RestController;
 import com.thdtraining.todoserver.models.User;
 //import com.thdtraining.todoserver.pojos.UserEmail;
 import com.thdtraining.todoserver.pojos.UserPojos;
+import com.thdtraining.todoserver.pojos.UserShowPojo;
 import com.thdtraining.todoserver.services.UserService;
 
 @RestController
-@RequestMapping("/user")
-@CrossOrigin("http://localhost:4200")
+@RequestMapping("/api/user")
+@CrossOrigin("http://localhost:4200/*")
 public class UserController {
     
     private UserService userService;
@@ -35,12 +36,12 @@ public class UserController {
     }
 
     @GetMapping("/id/{id}")
-    public User getUserById(@PathVariable(name = "id") int id){
+    public UserShowPojo getUserById(@PathVariable(name = "id") int id){
         return this.userService.findUserById(id);
     }
 
     @GetMapping("/user-data/{email}")
-    public User getUserByEmail(@PathVariable(name = "email") String email){
+    public UserShowPojo getUserByEmail(@PathVariable(name = "email") String email){
         return this.userService.findUserByEmail(email);
     }
 

@@ -34,15 +34,18 @@ public class WebSecurityConfig {
 
         JWTAuthenticationFilter jwtAuthenticationFilter = new JWTAuthenticationFilter();
         jwtAuthenticationFilter.setAuthenticationManager(authManager);
-        jwtAuthenticationFilter.setFilterProcessesUrl("/login");
+        jwtAuthenticationFilter.setFilterProcessesUrl("/api/login");
+        jwtAuthenticationFilter.setPostOnly(true);
 
-        return http.csrf().disable()
+        return http
+            .cors().and()
+            .csrf().disable()
             .authorizeRequests()
-                .antMatchers(HttpMethod.POST,"/user")
+                .antMatchers(HttpMethod.POST,"/api/user")
                 .permitAll()
-                .antMatchers(HttpMethod.GET,"/user")
+                .antMatchers(HttpMethod.GET,"/api/user")
                 .hasAuthority("ADMIN")
-                .antMatchers(HttpMethod.DELETE,"/user/id/**")
+                .antMatchers(HttpMethod.DELETE,"/api/user/id/**")
                 .hasAuthority("ADMIN")
             .anyRequest()
             .authenticated()

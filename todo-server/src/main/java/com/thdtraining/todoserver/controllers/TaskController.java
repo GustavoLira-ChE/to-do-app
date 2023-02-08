@@ -21,8 +21,8 @@ import com.thdtraining.todoserver.services.TaskService;
 
 
 @RestController
-@RequestMapping("/task")
-@CrossOrigin("http://localhost:4200")
+@RequestMapping("/api/task")
+@CrossOrigin("http://localhost:4200/*")
 public class TaskController {
     
     private TaskService taskService;

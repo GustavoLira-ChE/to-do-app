@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.thdtraining.todoserver.models.User;
 import com.thdtraining.todoserver.pojos.UserPojos;
+import com.thdtraining.todoserver.pojos.UserShowPojo;
 import com.thdtraining.todoserver.repository.UserRepository;
 
 @Service
@@ -28,8 +29,15 @@ public class UserService implements UserServiceImp {
     }
 
     @Override
-    public User findUserById(Integer id_user) {
-        return this.userRepo.findById(id_user).orElse(null);
+    public UserShowPojo findUserById(Integer id_user) {
+        User userAllInfo = this.userRepo.findById(id_user).orElse(null);
+        UserShowPojo userShow = new UserShowPojo();
+        userShow.setIduser(userAllInfo.getIduser());
+        userShow.setFirstName(userAllInfo.getFirstName());
+        userShow.setLastName(userAllInfo.getLastName());
+        userShow.setEmail(userAllInfo.getEmail());
+        userShow.setRole(userAllInfo.getRole()); 
+        return userShow;
     }
 
     @Override
@@ -53,7 +61,14 @@ public class UserService implements UserServiceImp {
     }
 
     @Override
-    public User findUserByEmail(String email) {
-        return this.userRepo.findOneByEmail(email); 
+    public UserShowPojo findUserByEmail(String email) {
+        User userAllInfo = this.userRepo.findOneByEmail(email);
+        UserShowPojo userShow = new UserShowPojo();
+        userShow.setIduser(userAllInfo.getIduser());
+        userShow.setFirstName(userAllInfo.getFirstName());
+        userShow.setLastName(userAllInfo.getLastName());
+        userShow.setEmail(userAllInfo.getEmail());
+        userShow.setRole(userAllInfo.getRole()); 
+        return userShow; 
     }
 }
