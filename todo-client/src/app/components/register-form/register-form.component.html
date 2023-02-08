@@ -1,0 +1,23 @@
+<h1>Create an account</h1>
+<h2>Register form</h2>
+
+<form [formGroup]="registerForm" (ngSubmit)="onSubmitRegister()">
+
+  <div>
+    <label for="">First name: </label>
+    <input type="text" formControlName="firstName">
+  </div>
+  <div>
+    <label for="">Last name: </label>
+    <input type="text" formControlName="lastName">
+  </div>
+  <div>
+    <label for="">Email: </label>
+    <input type="email" formControlName="email">
+  </div>
+  <div>
+    <label for="">Password: </label>
+    <input type="password" formControlName="password">
+  </div>
+  <input type="submit" value="Login" [disabled]="registerForm.invalid">
+</form>
