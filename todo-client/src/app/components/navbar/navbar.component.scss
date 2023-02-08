@@ -1,0 +1,19 @@
+.navbar{
+  width: 100%;
+
+  .navbar-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    max-width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+
+    nav{
+      a{
+        padding-right: 16px;
+        cursor: pointer;
+      }
+    }
+  }
+}

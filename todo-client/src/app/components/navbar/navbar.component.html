@@ -1,0 +1,17 @@
+<div class="navbar">
+  <div class="navbar-container">
+    <h1><a routerLink="/">{{title}}</a></h1>
+    <div *ngIf="(session$ | async) as info">
+      <nav *ngIf="info.token != null && info.user != null; else notSession">
+        <a routerLink="/" routerLinkActive="active">{{info.user.email}}</a>
+        <a routerLink="/" routerLinkActive="active" (click)="logout()">Logout</a>
+      </nav>
+      <ng-template #notSession>
+        <nav>
+          <a routerLink="/login" routerLinkActive="active">Login</a>
+          <a routerLink="/register" routerLinkActive="active">Register</a>
+        </nav>
+      </ng-template>
+    </div>
+  </div>
+</div>
