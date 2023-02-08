@@ -1,0 +1,14 @@
+.welcome{
+  width: 100%;
+  height: calc(100vh - 120px);
+  display: grid;
+  align-items: center;
+
+  .welcome-container{
+    display: flex;
+    justify-content: space-between;
+    max-width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
